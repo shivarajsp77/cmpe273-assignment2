@@ -25,18 +25,12 @@
 	</repositories>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.yammer.dropwizard</groupId>
-			<artifactId>dropwizard-core</artifactId>
-			<version>${dropwizard.version}</version>
-		</dependency>
-		<!-- Dropwizard jobs from local build -->
-		<dependency>
-			<groupId>de.spinscale.dropwizard</groupId>
-			<artifactId>dropwizard-jobs</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<!-- STOMP JMS Client -->
+	<dependency>
+  <groupId>de.spinscale.dropwizard</groupId>
+  <artifactId>dropwizard-jobs</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  </dependency>
+	
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-jms_1.1_spec</artifactId>
@@ -47,14 +41,52 @@
 			<artifactId>stompjms-client</artifactId>
 			<version>1.13</version>
 		</dependency>
-		<!-- Jersey Client -->
+	<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.8</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<dependency>
+    		<groupId>javax.ws.rs</groupId>
+    		<artifactId>javax.ws.rs-api</artifactId>
+    		<version>2.0</version>
+    		<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+  		<groupId>de.spinscale.dropwizard</groupId>
+  		<artifactId>dropwizard-jobs</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+	</dependency>
 		<dependency>
 			<groupId>com.yammer.dropwizard</groupId>
-            <artifactId>dropwizard-client</artifactId>
-            <version>${dropwizard.version}</version>
+			<artifactId>dropwizard-core</artifactId>
+			<version>${dropwizard.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>apollo-stomp</artifactId>
+			<version>1.6</version>
+		</dependency>
+        <dependency>
+			<groupId>com.yammer.dropwizard</groupId>
+			<artifactId>dropwizard-client</artifactId>
+			<version>0.6.2</version>
+		</dependency>
+                
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

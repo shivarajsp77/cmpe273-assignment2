@@ -128,4 +128,11 @@ public class Book {
 	this.status = status;
     }
 
+	@Override
+	public String toString() {
+		return "Book [isbn=" + isbn + ", title=" + title + ", category="
+				+ category + ", coverimage=" + coverimage + ", status="
+				+ status + "]";
+	}
+
 }

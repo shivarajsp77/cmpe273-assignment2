@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe.library.api.resources;
 
+import javax.jms.JMSException;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -61,7 +62,6 @@ public class BookResource {
     public Response createBook(@Valid Book request) {
 	// Store the new book in the BookRepository so that we can retrieve it.
 	Book savedBook = bookRepository.saveBook(request);
-
 	String location = "/books/" + savedBook.getIsbn();
 	BookDto bookResponse = new BookDto(savedBook);
 	bookResponse.addLink(new LinkDto("view-book", location, "GET"));
@@ -85,10 +85,11 @@ public class BookResource {
     @Path("/{isbn}")
     @Timed(name = "update-book-status")
     public Response updateBookStatus(@PathParam("isbn") LongParam isbn,
-	    @DefaultValue("available") @QueryParam("status") Status status) {
+	    @DefaultValue("available") @QueryParam("status") Status status) throws JMSException {
 	Book book = bookRepository.getBookByISBN(isbn.get());
-	book.setStatus(status);
-
+	if (book.getStatus().equals(Status.available)) {
+		book = bookRepository.updateBookStatus(book, status);//book.setStatus(status);
+	}
 	BookDto bookResponse = new BookDto(book);
 	String location = "/books/" + book.getIsbn();
 	bookResponse.addLink(new LinkDto("view-book", location, "GET"));
